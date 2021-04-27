@@ -1,0 +1,26 @@
+{
+    "name": "joaoalves-kununu/test-github-actions",
+    "authors": [
+        {
+            "name": "João Alves",
+            "email": "joao.alves@kununu.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Alves\\TestGitHubActions\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Alves\\TestGitHubActions\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
