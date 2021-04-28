@@ -26,6 +26,6 @@
         "sort-packages": true
     },
     "scripts": {
-        "tests": "vendor/bin/phpunit --no-coverage tests"
+        "test": "vendor/bin/phpunit --no-coverage tests/"
     }
 }
