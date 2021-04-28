@@ -1,5 +1,7 @@
 {
     "name": "joaoalves-kununu/test-github-actions",
+    "description": "Test GitHub Actions",
+    "license": "MIT",
     "authors": [
         {
             "name": "João Alves",
@@ -22,5 +24,8 @@
     },
     "config": {
         "sort-packages": true
+    },
+    "scripts": {
+        "tests": "phpunit --no-coverage tests"
     }
 }
