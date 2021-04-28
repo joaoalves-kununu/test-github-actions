@@ -57,14 +57,11 @@ jobs:
           name: build-7.2-coverage
           path: tests/.results/
 
-      - name: Read package.json
-        id: package
-        uses: juliangruber/read-file-action@v1
-        with:
-          path: tests/.results/coverage.xml
-
-      - name: Echo package.json
-        run: echo ${{ steps.package.outputs.content }}
+      - name: Fix Code Coverage Paths
+        working-directory: tests/.results/
+        run: |
+          sed -i 's/\/home\/runner\/work\/test-github-actions\/test-github-actions\//\/github\/workspace\//g' coverage.xml
+          sed -i 's/\/home\/runner\/work\/test-github-actions\/test-github-actions\//\/github\/workspace\//g' phpunit.xml
 
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
