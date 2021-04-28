@@ -35,13 +35,13 @@ jobs:
           dependency-versions: ${{ matrix.dependencies }}
 
       - name: Run PHPUnit
-        run: vendor/bin/phpunit tests --coverage-clover tests/.results/coverage.xml
+        run: vendor/bin/phpunit tests --coverage-clover tests/.results/coverage.xml --log-junit=tests/.results/phpunit.xml
 
       - name: Upload coverage files
         uses: actions/upload-artifact@v2
         with:
           name: ${{ github.job }}-${{ matrix.php-versions }}-coverage
-          path: tests/.results/coverage.xml
+          path: tests/.results/
 
 #  sonarcloud:
 #    needs: build
