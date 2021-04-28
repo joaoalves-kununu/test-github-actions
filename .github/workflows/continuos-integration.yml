@@ -27,7 +27,6 @@ jobs:
         with:
           php-version: ${{ matrix.php-versions }}
           coverage: xdebug
-          tools: phpunit
 
       - name: Install Composer Dependencies
         uses: ramsey/composer-install@v1
@@ -35,5 +34,11 @@ jobs:
           dependency-versions: ${{ matrix.dependencies }}
 
       - name: Run PHPUnit
-        run: composer run-script test
+        run: vendor/bin/phpunit tests --coverage-clover tests/.results/coverage.xml --coverage-html tests/.results/html/
+
+      - name: Upload coverage files
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ github.job }}-${{ matrix.php-version }}-coverage
+          path: tests/.results/
 
