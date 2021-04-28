@@ -57,19 +57,6 @@ jobs:
           name: build-7.2-coverage
           path: tests/.results/
 
-      - name: Display structure of downloaded files
-        working-directory: tests/.results/
-        run: ls -R
-
-      - name: Read Coverage.xml
-        id: coverage
-        uses: juliangruber/read-file-action@v1
-        with:
-          path: tests/.results/coverage.xml
-
-      - name: Echo Coverage.xml
-        run: echo ${{ steps.coverage.outputs.content }}
-
       - name: Fix Code Coverage Paths
         working-directory: tests/.results/
         run: sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' tests/.results/coverage.xml
