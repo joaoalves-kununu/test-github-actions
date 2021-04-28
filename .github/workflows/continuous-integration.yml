@@ -35,25 +35,25 @@ jobs:
           dependency-versions: ${{ matrix.dependencies }}
 
       - name: Run PHPUnit
-        run: vendor/bin/phpunit tests --coverage-clover tests/.results/coverage.xml --coverage-html tests/.results/html/
+        run: vendor/bin/phpunit tests --coverage-clover tests/.results/coverage.xml
 
       - name: Upload coverage files
         uses: actions/upload-artifact@v2
         with:
           name: ${{ github.job }}-${{ matrix.php-versions }}-coverage
-          path: tests/.results/
+          path: tests/.results/coverage.xml
 
-  sonarcloud:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          # Disabling shallow clone is recommended for improving relevancy of reporting
-          fetch-depth: 0
-      - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#  sonarcloud:
+#    needs: build
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#        with:
+#          # Disabling shallow clone is recommended for improving relevancy of reporting
+#          fetch-depth: 0
+#      - name: SonarCloud Scan
+#        uses: sonarsource/sonarcloud-github-action@master
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
