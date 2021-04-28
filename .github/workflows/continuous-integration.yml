@@ -7,6 +7,9 @@ on:
   pull_request:
     types: [ opened, synchronize, reopened ]
 
+env:
+  fail-fast: true
+
 jobs:
   build:
     name: PHPUnit
@@ -68,8 +71,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-#        with:
-#          args: >
-#            -Dsonar.php.coverage.reportPaths=/github/workspace/tests/.results/coverage.xml
-#            -Dsonar.php.tests.reportPath=/github/workspace/tests/.results/phpunit.xml
 
