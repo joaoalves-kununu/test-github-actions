@@ -8,4 +8,9 @@ class Calculator
     {
         return $x + $y;
     }
+
+    public function diff(int $x, int $y) : int
+    {
+        return $x - $y;
+    }
 }
